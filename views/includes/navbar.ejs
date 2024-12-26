@@ -10,11 +10,11 @@
     color:white;
   }
   .search-btn i{
-    display: inline;
+    display: inline !important;
     margin-right: 0.5rem;
 
   }
-  .search-inp{
+  .search-input{
     border-radius: 25px;
     padding: 0.5rem 1rem 0.5rem 3rem;
     font-size: 1rem;
@@ -33,7 +33,7 @@
         </div>
         <div class="navbar-nav ms-auto" data-filter="country">
           <form class="d-flex" role="search" id="search-form">
-            <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations" id="search-input">
+            <input class="form-control me-2 search-input" type="search" placeholder="Search destinations" id="search-input">
             <button class="btn search-btn" type="submit">
               <i class="fa-solid fa-magnifying-glass"></i>Search
             </button>
@@ -57,28 +57,21 @@ document.getElementById('search-form').addEventListener('submit', function (even
   event.preventDefault(); // Prevent form submission
   const searchValue = document.getElementById('search-input').value.trim().toLowerCase();
 
+  // Get all listing cards
   const cards = document.querySelectorAll('.listing-card');
-  const noResultsMessage = document.getElementById('no-results');
-  let hasResults = false;
 
   cards.forEach(card => {
+    // Get the data-country attribute value
     const cardCountry = card.getAttribute('data-country')?.toLowerCase();
+   
+    // Show or hide based on the search value
     if (!searchValue || cardCountry.includes(searchValue)) {
-      card.style.display = '';
-      hasResults = true;
+      card.style.display = 'block';
+      
     } else {
       card.style.display = 'none';
     }
   });
-
-  noResultsMessage.style.display = hasResults ? 'none' : 'block';
-});
-
-document.getElementById('clear-search').addEventListener('click', () => {
-  document.getElementById('search-input').value = '';
-  const cards = document.querySelectorAll('.listing-card');
-  cards.forEach(card => (card.style.display = ''));
-  document.getElementById('no-results').style.display = 'none';
 });
 
 

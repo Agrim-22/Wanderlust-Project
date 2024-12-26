@@ -7,8 +7,8 @@
   }
   .filter {
     text-align: center;
-    margin-right: 2rem;
-    margin-top: 2rem;
+    margin-right: 2.5rem;
+    margin-top: 2.5rem;
     opacity: 0.7;
   }
   .filter:hover {
@@ -26,14 +26,11 @@
     border-radius: 1rem;
     height: 3.25rem;
     padding: 1rem;
-    margin-left: 2rem;
+    /* margin-left: 2rem; */
     display: flex;
     align-items: center;
   }
-  .listing-card{
-    justify-content: start;
-    align-items: start;
-  }
+ 
 
 </style>
   
@@ -98,9 +95,9 @@
             src="<%= listing.image.url %>"
             class="card-img-top"
             alt="listing_image"
-            style="height: 20rem"
+            style="height: 20rem;"
           />
-          
+          <div class="card-img-overlay"></div>
           <div class="card-body">
             <p class="card-text">
               <b><%= listing.title %></b>
